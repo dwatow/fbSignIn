@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -80,12 +81,22 @@ public:
 
     void GetSignInMember()
     {
-        result.push_back("result is:");
+        findSignInMember();
+        removeRepeatMember();
+    }
 
+    void findSignInMember()
+    {
         for (std::vector<string>::iterator iMember = member.begin(); iMember != member.end(); ++iMember)
             for (std::vector<string>::iterator iSignIn = fbSignIn.begin(); iSignIn != fbSignIn.end(); ++iSignIn)
-                if (isMemberInLineHead(iSignIn, iMember) && isSignInNotAgain(iMember))
+                if (isMemberInLineHead(iSignIn, iMember))
                     result.push_back(*iMember);
+    }
+
+    void removeRepeatMember()
+    {
+        std::sort(result.begin(), result.end());
+        result.erase(std::unique(result.begin(), result.end()), result.end());
     }
 
     void ShowFbSignIn()
