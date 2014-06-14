@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <cassert>
 
 using namespace std;
 
@@ -30,13 +31,19 @@ class comparisionStr{
     void findLineOfMemberName(vector<string>& data)
     {
         vector<string> strv;
+		vector<string>::iterator prev_it = data.begin();
         for (vector<string>::iterator it = data.begin(); it != data.end(); ++it)
         {
-            if (it->length() == 0)
+            if(it->length() == 0)
             {
-                ++it;
-                strv.push_back(*it);
+				prev_it = it;
+                continue;
             }
+
+			if (prev_it->length() == 0)
+				strv.push_back(*it);
+
+			prev_it = it;
         }
         data.clear();
         data = strv;
