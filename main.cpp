@@ -5,7 +5,7 @@ using namespace std;
 
 void messageRightParameterIs()
 {
-    cout << endl << "right format command is:" << endl << "    main <input file> <input file> <output file>" << endl;
+    cout << endl << "right format command is:" << endl << "    main <members file> <signIn file> <result file>" << endl;
 }
 
 int main(int argc, char const *argv[])
