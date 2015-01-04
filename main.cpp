@@ -5,7 +5,8 @@ using namespace std;
 
 void messageRightParameterIs()
 {
-    cout << endl << "right format command is:" << endl << "    main <members file> <signIn file> <result file>" << endl;
+	cout << endl << "right format command is:" << endl << "    main <members file> <signIn file> <result file>" << endl;
+	        cout << "                        " << endl << "or  main <members file> <signIn file> <result file> <remove member file>" << endl;
 }
 
 int main(int argc, char const *argv[])
@@ -34,6 +35,15 @@ int main(int argc, char const *argv[])
         //realMain.ShowMember();
         realMain.ShowResult();
         realMain.GetResult(argv[3]);
+
+	case 5:
+		realMain.SetMember(argv[1]);
+		realMain.SetfbSignIn(argv[2]);
+		realMain.GetSignInMember();
+		realMain.ShowResult();
+		realMain.GetResult(argv[3]);
+
+		realMain.GetRemoveList(argv[4]);
         break;
     default:
         cout << "fbSignIn: parameter is to much" << endl;

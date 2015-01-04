@@ -13,6 +13,7 @@ class comparisionStr{
     vector<string> member;
     vector<string> fbSignIn;
     vector<string> result;
+	vector<string> removelist;
 
     void getData(const char* path, vector<string>& data)
     {
@@ -92,6 +93,11 @@ public:
         removeRepeatMember();
     }
 
+	void GetRemoveList(const char* oPath) 
+	{
+		filterSignInMember(oPath);
+	}
+
     void findSignInMember()
     {
         for (std::vector<string>::iterator iMember = member.begin(); iMember != member.end(); ++iMember)
@@ -120,5 +126,20 @@ public:
     {
         show(result);
     }
+
+	void filterSignInMember(const char* oPath) 
+	{
+		removelist = member;
+
+		for (std::vector<std::string>::iterator it = result.begin(); it != result.end(); ++it)
+		{
+			removelist.erase(remove(removelist.begin(), removelist.end(), *it), removelist.end());
+		}
+
+		setData(oPath, removelist);
+	}
+
+
+
 };
 #endif
